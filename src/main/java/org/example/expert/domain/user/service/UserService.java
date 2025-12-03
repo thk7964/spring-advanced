@@ -17,6 +17,10 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    public User save(User user){
+        return userRepository.save(user);
+    }
+
     @Transactional(readOnly = true)
     public UserResponse getUser(long userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new InvalidRequestException("User not found"));
